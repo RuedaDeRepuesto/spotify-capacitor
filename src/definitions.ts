@@ -8,7 +8,6 @@ export interface SpotifyPluginPlugin {
 
   getPlayerState():Promise<SpotifyPlayerStatus>;
   authorize(song:SpotifySong) : Promise<void>;
-  disconnect() : Promise<void>;
 
   setup(options:SpotifyOptions):Promise<void>;
 }
