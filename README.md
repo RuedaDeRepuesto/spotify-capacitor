@@ -2,6 +2,10 @@
 
 Spotify control capacitor
 
+# Desc
+
+Simple Capacitor plugin to use Spotify iOS SDK
+
 ## Install
 
 ```bash
