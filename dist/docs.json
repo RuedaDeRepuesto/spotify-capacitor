@@ -1,0 +1,233 @@
+{
+  "api": {
+    "name": "SpotifyPluginPlugin",
+    "slug": "spotifypluginplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "playSong",
+        "signature": "(song: SpotifySong) => Promise<void>",
+        "parameters": [
+          {
+            "name": "song",
+            "docs": "",
+            "type": "SpotifySong"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "SpotifySong"
+        ],
+        "slug": "playsong"
+      },
+      {
+        "name": "pause",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "pause"
+      },
+      {
+        "name": "resume",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "resume"
+      },
+      {
+        "name": "skipPrev",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "skipprev"
+      },
+      {
+        "name": "skipNext",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "skipnext"
+      },
+      {
+        "name": "getPlayerState",
+        "signature": "() => Promise<SpotifyPlayerStatus>",
+        "parameters": [],
+        "returns": "Promise<SpotifyPlayerStatus>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "SpotifyPlayerStatus"
+        ],
+        "slug": "getplayerstate"
+      },
+      {
+        "name": "authorize",
+        "signature": "(song: SpotifySong) => Promise<void>",
+        "parameters": [
+          {
+            "name": "song",
+            "docs": "",
+            "type": "SpotifySong"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "SpotifySong"
+        ],
+        "slug": "authorize"
+      },
+      {
+        "name": "setup",
+        "signature": "(options: SpotifyOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SpotifyOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "SpotifyOptions"
+        ],
+        "slug": "setup"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "SpotifySong",
+      "slug": "spotifysong",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "url",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SpotifyPlayerStatus",
+      "slug": "spotifyplayerstatus",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "paused",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "podcast",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "songId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "songName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "albumName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "artistName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "position",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "duration",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "title",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "SpotifyOptions",
+      "slug": "spotifyoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "clientId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "redirectUri",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [],
+  "pluginConfigs": []
+}

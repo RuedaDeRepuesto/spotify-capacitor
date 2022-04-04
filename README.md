@@ -25,7 +25,6 @@ npx cap sync
 * [`skipNext()`](#skipnext)
 * [`getPlayerState()`](#getplayerstate)
 * [`authorize(...)`](#authorize)
-* [`disconnect()`](#disconnect)
 * [`setup(...)`](#setup)
 * [Interfaces](#interfaces)
 
@@ -103,15 +102,6 @@ authorize(song: SpotifySong) => Promise<void>
 | Param      | Type                                                |
 | ---------- | --------------------------------------------------- |
 | **`song`** | <code><a href="#spotifysong">SpotifySong</a></code> |
-
---------------------
-
-
-### disconnect()
-
-```typescript
-disconnect() => Promise<void>
-```
 
 --------------------
 
