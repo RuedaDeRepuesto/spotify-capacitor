@@ -5,6 +5,7 @@ Spotify control capacitor
 # Desc
 
 Simple Capacitor plugin to use Spotify iOS SDK
+Se debe ignorar que escribo comentarios en ingles y español, mi cerebro no funciona bien :)
 
 ## Install
 

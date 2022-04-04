@@ -185,4 +185,30 @@ public class SpotifyPluginPlugin extends Plugin {
         appRemote.getPlayerApi().skipPrevious();
         call.success();
     }
+
+    @PluginMethod()
+    public void playSong(PluginCall call){
+        try{
+            String url = call.getString("url");
+            if(url.isEmpty()){
+                call.reject("Not url provided");
+                return;
+            }
+
+            if(appRemote == null){
+                call.reject("Not connected");
+            }
+            if(!appRemote.isConnected()){
+                call.reject("Not connected");
+            }
+
+            appRemote.getPlayerApi().play(url);
+            call.resolve();
+        }
+        catch(Exception ex) {
+            call.reject("Not connected");
+        }
+    }
+
+
 }
