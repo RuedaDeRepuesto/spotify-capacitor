@@ -9,7 +9,9 @@
   "files": [
     "android/src/main/",
     "android/build.gradle",
+    "android/spotify-appremote/",
     "dist/",
+    "SpotifyiOS.xcframework",
     "ios/Plugin/",
     "SimpleSpotifyCapacitor.podspec"
   ],
