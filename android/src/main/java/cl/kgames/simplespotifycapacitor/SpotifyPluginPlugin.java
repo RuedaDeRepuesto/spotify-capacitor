@@ -71,6 +71,7 @@ public class SpotifyPluginPlugin extends Plugin {
             obj.put("artistName",playerState.track.artist.name);
             obj.put("position",playerState.playbackPosition);
             obj.put("duration",playerState.track.duration);
+            obj.put("coverImageUrl",playerState.track.imageUri);
             return obj.toString();
         } catch (Exception e) {
             return "{}";
@@ -88,6 +89,8 @@ public class SpotifyPluginPlugin extends Plugin {
         REDIRECT_URI = call.getString("redirectUri");
         call.resolve();
     }
+
+    
 
     @PluginMethod()
     public void authorize(PluginCall call){
