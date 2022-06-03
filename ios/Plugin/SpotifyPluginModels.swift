@@ -52,7 +52,7 @@ extension SPTAppRemotePlayerState {
     // Stringfy
     public func toJSON(imageBase64:String?) -> String{
         if let theJSONData = try? JSONSerialization.data(
-            withJSONObject: self.toDictionary(imageBase64),
+            withJSONObject: self.toDictionary(imageBase64:imageBase64),
             options: []) {
             let theJSONText = String(data: theJSONData,
                                        encoding: .ascii)
