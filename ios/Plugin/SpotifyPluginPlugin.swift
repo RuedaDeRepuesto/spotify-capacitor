@@ -229,9 +229,22 @@ public class SpotifyPluginPlugin: CAPPlugin, SPTAppRemoteDelegate, SPTAppRemoteP
     }
     
     public func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        //self.playUri = playerState.track.uri
-        //self.currentTrack = playerState.track
-        self.bridge?.triggerWindowJSEvent(eventName: playerStateChangedEventName, data: playerState.toJSON())
+        self.bridge?.triggerWindowJSEvent(eventName: playerStateChangedEventName, data: playerState.toJSON(nil))
+
+        //generamos un segundo evento que tenga la imagen, en teoria fetch image es async por lo cual tendria que pasar despues, en teoria...
+        guard let image = self.appRemote.imageAPI{
+            guard let track = playerState.track{
+                DispatchQueue.main.async {
+                        image.fetchImage(forItem: track, with:CGSize(width: 128, height: 128), callback: { (image, error) -> Void in
+                        guard error == nil {
+                            let image = image as! UIImage
+                            let imageString = image.toBase64()
+                            self.bridge?.triggerWindowJSEvent(eventName: playerStateChangedEventName, data: playerState.toJSON(imageString))
+                        }
+                    })
+                }
+            }
+        }
     }
     
     

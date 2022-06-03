@@ -3,7 +3,7 @@
 Spotify control capacitor
 
 # Desc
-
+In developement
 Simple Capacitor plugin to use Spotify iOS SDK
 Se debe ignorar que escribo comentarios en ingles y español, mi cerebro no funciona bien :)
 
@@ -131,17 +131,19 @@ setup(options: SpotifyOptions) => Promise<void>
 
 #### SpotifyPlayerStatus
 
-| Prop             | Type                 |
-| ---------------- | -------------------- |
-| **`paused`**     | <code>boolean</code> |
-| **`podcast`**    | <code>boolean</code> |
-| **`songId`**     | <code>string</code>  |
-| **`songName`**   | <code>string</code>  |
-| **`albumName`**  | <code>string</code>  |
-| **`artistName`** | <code>string</code>  |
-| **`position`**   | <code>number</code>  |
-| **`duration`**   | <code>number</code>  |
-| **`title`**      | <code>string</code>  |
+| Prop                   | Type                 |
+| ---------------------- | -------------------- |
+| **`paused`**           | <code>boolean</code> |
+| **`podcast`**          | <code>boolean</code> |
+| **`songId`**           | <code>string</code>  |
+| **`songName`**         | <code>string</code>  |
+| **`albumName`**        | <code>string</code>  |
+| **`artistName`**       | <code>string</code>  |
+| **`position`**         | <code>number</code>  |
+| **`duration`**         | <code>number</code>  |
+| **`title`**            | <code>string</code>  |
+| **`coverImageUrl`**    | <code>string</code>  |
+| **`coverImageBase64`** | <code>string</code>  |
 
 
 #### SpotifyOptions

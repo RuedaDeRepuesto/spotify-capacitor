@@ -32,7 +32,7 @@ struct SpotifyStateChangedEvent: Codable {
 extension SPTAppRemotePlayerState {
     
     // Get State as dictionary
-    public func toDictionary() -> [String : Any]{
+    public func toDictionary(imageBase64:String?) -> [String : Any]{
         let obj:[String : Any] = [
             "paused":self.isPaused,
             "podcast":self.track.isPodcast,
@@ -42,16 +42,17 @@ extension SPTAppRemotePlayerState {
             "artistName":self.track.artist.name,
             "position":self.playbackPosition,
             "duration": self.track.duration,
-            "title": self.contextTitle
+            "title": self.contextTitle,
+            "coverImageBase64": imageBase64
         ]
         return obj
     }
     
     
     // Stringfy
-    public func toJSON() -> String{
+    public func toJSON(imageBase64:String?) -> String{
         if let theJSONData = try? JSONSerialization.data(
-            withJSONObject: self.toDictionary(),
+            withJSONObject: self.toDictionary(imageBase64),
             options: []) {
             let theJSONText = String(data: theJSONData,
                                        encoding: .ascii)
@@ -59,5 +60,14 @@ extension SPTAppRemotePlayerState {
         }
         
         return "{}"
+    }
+}
+
+
+
+extension UIImage{
+    public func toBase64() -> String{
+        let strBase64 =  self.pngData()?.base64EncodedString()
+        return strBase64!
     }
 }
