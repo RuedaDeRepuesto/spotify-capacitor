@@ -142,7 +142,6 @@ setup(options: SpotifyOptions) => Promise<void>
 | **`position`**         | <code>number</code>  |
 | **`duration`**         | <code>number</code>  |
 | **`title`**            | <code>string</code>  |
-| **`coverImageUrl`**    | <code>string</code>  |
 | **`coverImageBase64`** | <code>string</code>  |
 
 

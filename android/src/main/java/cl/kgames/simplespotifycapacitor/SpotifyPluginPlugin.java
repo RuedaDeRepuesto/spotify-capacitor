@@ -1,5 +1,8 @@
 package cl.kgames.simplespotifycapacitor;
 
+import android.graphics.Bitmap;
+import android.util.Base64;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -7,11 +10,17 @@ import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 import com.spotify.android.appremote.api.ConnectionParams;
 import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.ImagesApi;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
 
+import com.spotify.protocol.client.CallResult;
 import com.spotify.protocol.client.Subscription;
+import com.spotify.protocol.types.Image;
 import com.spotify.protocol.types.PlayerState;
 import com.spotify.protocol.types.Track;
+
+import java.io.ByteArrayOutputStream;
+import java.io.Console;
 
 
 @CapacitorPlugin(name = "SpotifyPlugin")
@@ -51,15 +60,31 @@ public class SpotifyPluginPlugin extends Plugin {
 
     private void appRemotePlayerStateChanged(PlayerState playerState){
         if(appRemote.isConnected()) {
-            bridge.triggerWindowJSEvent(playerStateChangedCallback,playerToJSON(playerState));
+            bridge.triggerWindowJSEvent(playerStateChangedCallback,playerToJSON(playerState,null));
             currentTrack = playerState.track;
+
+
+            try{
+              ImagesApi imageApi = appRemote.getImagesApi();
+              CallResult<Bitmap> call = imageApi.getImage(playerState.track.imageUri,Image.Dimension.X_SMALL);
+              call.setResultCallback(bitmap -> {
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+                String base64Image = Base64.encodeToString(outputStream.toByteArray(), Base64.NO_WRAP);
+                bridge.triggerWindowJSEvent(playerStateChangedCallback,playerToJSON(playerState,base64Image));
+              });
+            }
+            catch(Exception ex){
+              System.out.println("Capacitor/Console: Error image"+ex.getMessage());
+            }
+
         }
         else{
             bridge.triggerWindowJSEvent(spotifyStateChangedCallback,spotifyEvent("Disconnected",false,false));
         }
     }
 
-    public static String playerToJSON(PlayerState playerState)
+    public static String playerToJSON(PlayerState playerState, String coverImage)
     {
         JSObject obj = new JSObject();
         try {
@@ -71,7 +96,9 @@ public class SpotifyPluginPlugin extends Plugin {
             obj.put("artistName",playerState.track.artist.name);
             obj.put("position",playerState.playbackPosition);
             obj.put("duration",playerState.track.duration);
-            obj.put("coverImageUrl",playerState.track.imageUri);
+            if(coverImage != null) {
+              obj.put("coverImageBase64", coverImage);
+            }
             return obj.toString();
         } catch (Exception e) {
             return "{}";
@@ -90,7 +117,7 @@ public class SpotifyPluginPlugin extends Plugin {
         call.resolve();
     }
 
-    
+
 
     @PluginMethod()
     public void authorize(PluginCall call){

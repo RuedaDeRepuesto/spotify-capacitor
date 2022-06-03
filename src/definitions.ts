@@ -31,7 +31,6 @@ export interface SpotifyPlayerStatus{
   position?:number;
   duration?:number;
   title?:string;
-  coverImageUrl?:string;
   coverImageBase64?:string;
 }
 
